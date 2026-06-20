@@ -1,7 +1,6 @@
-function CoinTable() {
-  return (
-    <div>CoinTable</div>
-  )
+function CoinTable({ coins }) {
+  console.log(coins);
+  return <div>CoinTable</div>;
 }
 
-export default CoinTable
+export default CoinTable;
