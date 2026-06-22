@@ -1,9 +1,15 @@
+import {RotatingLines} from "react-loader-spinner";
+
+
+
 import chartdown from "../../assets/chart-down.svg";
 import chartup from "../../assets/chart-up.svg";
 
-function CoinTable({ coins }) {
+function CoinTable({ coins, loading }) {
   // console.log(coins);
-  return (
+  return loading ? (
+    <RotatingLines  color="gray"/>
+  ) : (
     <div>
       <table>
         <thead>
@@ -18,8 +24,8 @@ function CoinTable({ coins }) {
         </thead>
         <tbody>
           {coins.map((coin) => (
-            <Table coin={coin} key={coin.id} />)
-          )}
+            <Table coin={coin} key={coin.id} />
+          ))}
         </tbody>
       </table>
     </div>

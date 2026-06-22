@@ -4,12 +4,14 @@ import { getApi } from "../../services/cryptoApi";
 
 function Homepage() {
   const [coins, setCoins] = useState([]);
+  const [loading , setLoading]=useState(true);
 
   useEffect(() => {
     const fetchApi = async () => {
       const res = await fetch(getApi());
       const json = await res.json();
       setCoins(json);
+      setLoading(false);
     };
 
     fetchApi();
@@ -17,7 +19,7 @@ function Homepage() {
 
   return (
     <div>
-      <CoinTable coins={coins} />
+      <CoinTable coins={coins}  loading={loading}/>
     </div>
   );
 }
