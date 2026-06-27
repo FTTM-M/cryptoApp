@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 50px 100px;
+    min-height: 1000px;
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table thead{
+    border-bottom: 2px solid #ffffff ;
+    margin-bottom: 20px;
+
+}
+.table th{
+    font-size: 1.2rem;
+    padding: 10px 0px;
+    text-align: left;
+
+}
+.table tbody tr{
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 80px;
+    border-bottom: 2px solid #22262e;
+}
+.symbol{
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+.symbol img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.symbol span{
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #9fa6b7;
+}
+.true{
+    color: #57bc7c;
+}
+.fale{
+    color: #d33636;
+}
+@media (max-width:600px){
+    .table{
+        display: block;
+        overflow-x: scroll;
+    }
+    
+        .table td,.table th{
+            padding: 0px 10px;
+
+        }
+    
+}
