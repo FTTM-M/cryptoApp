@@ -1,7 +1,6 @@
+import styles from "./Pagination.module.css";
 
-
-function Pagination({page , setPage}) {
-
+function Pagination({ page, setPage }) {
   const previousHandler = () => {
     if (page <= 1) return;
     setPage((page) => page - 1);
@@ -12,7 +11,7 @@ function Pagination({page , setPage}) {
   };
 
   return (
-    <div>
+    <div className={styles.Pagination}>
       <button onClick={previousHandler}>previous</button>
       <p style={{ color: page === 1 ? "red" : "inherit" }}>1</p>
       <p style={{ color: page === 2 ? "red" : "inherit" }}>2</p>
