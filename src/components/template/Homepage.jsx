@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import CoinTable from "../module/CoinTable";
+import Pagination from "../module/Pagination";
 import { getApi } from "../../services/cryptoApi";
+
 
 function Homepage() {
   const [coins, setCoins] = useState([]);
-  const [loading , setLoading]=useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -19,7 +21,8 @@ function Homepage() {
 
   return (
     <div>
-      <CoinTable coins={coins}  loading={loading}/>
+      <Pagination />
+      <CoinTable coins={coins} loading={loading} />
     </div>
   );
 }
