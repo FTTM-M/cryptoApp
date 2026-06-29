@@ -1,18 +1,16 @@
-import {RotatingLines} from "react-loader-spinner";
-
-
+import { RotatingLines } from "react-loader-spinner";
 
 import chartdown from "../../assets/chart-down.svg";
 import chartup from "../../assets/chart-up.svg";
 
-import styles from "./CoinTable.module.css"
+import styles from "./CoinTable.module.css";
 
-function CoinTable({ coins, loading }) {
+function CoinTable({ coins, loading  , currency}) {
   // console.log(coins);
   return loading ? (
-    <RotatingLines  color="gray"/>
+    <RotatingLines color="gray" />
   ) : (
-    <div  className={styles.container}>
+    <div className={styles.container}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -26,7 +24,7 @@ function CoinTable({ coins, loading }) {
         </thead>
         <tbody>
           {coins.map((coin) => (
-            <Table coin={coin} key={coin.id} />
+            <Table coin={coin} key={coin.id} currency={currency} />
           ))}
         </tbody>
       </table>
@@ -45,9 +43,11 @@ const Table = ({
     price_change_percentage_24h,
     total_volume,
   },
+  currency,
 }) => {
+  // console.log(currency);
   return (
-    <tr >
+    <tr>
       <th>
         <div className={styles.symbol}>
           <img src={image} alt={name} />
@@ -55,9 +55,18 @@ const Table = ({
         </div>
       </th>
       <th>{name}</th>
-      <th>${current_price.toLocaleString()}</th>
-      <th className={price_change_percentage_24h > 0 ? styles.true :styles.fale}>{price_change_percentage_24h?.toFixed(2)}%</th>
-      <th>${total_volume.toLocaleString()}</th>
+      <th>
+        {currency === "eur" ? "€" : currency === "jpy" ? "¥" : "$"}
+        {current_price.toLocaleString()}
+      </th>
+      <th
+        className={price_change_percentage_24h > 0 ? styles.true : styles.fale}>
+        {price_change_percentage_24h?.toFixed(2)}%
+      </th>
+      <th>
+        {currency === "eur" ? "€" : currency === "jpy" ? "¥" : "$"}
+        {total_volume.toLocaleString()}
+      </th>
       <th>
         <img
           src={price_change_percentage_24h > 0 ? chartup : chartdown}

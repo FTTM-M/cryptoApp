@@ -16,16 +16,16 @@
   font-size: 1rem;
   cursor: pointer;
 }
-.Pagination p{
+.Pagination p {
   display: inline-block;
   border: 1px solid #254694;
   width: 25px;
   text-align: center;
   border-radius: 5px;
 }
-.disabled{ opacity : 0.3;
-
+.disabled {
+  opacity: 0.3;
 }
-.selected{
+.selected {
   background-color: #254694;
 }
