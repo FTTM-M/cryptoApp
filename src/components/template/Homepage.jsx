@@ -9,8 +9,8 @@ function Homepage() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setLoading(true);
     const fetchApi = async () => {
+      setLoading(true);
       const res = await fetch(getApi(page));
       const json = await res.json();
       setCoins(json);
@@ -22,8 +22,8 @@ function Homepage() {
 
   return (
     <div>
-      <Pagination page={page} setPage={setPage} />
       <CoinTable coins={coins} loading={loading} />
+      <Pagination page={page} setPage={setPage} />
     </div>
   );
 }
