@@ -10,6 +10,7 @@ function Search({ currency, setCurrency }) {
 
   useEffect(() => {
     const controller = new AbortController();
+    setCoins([]);
     if (!search) return;
     const searchApi = async () => {
       try {
@@ -51,6 +52,16 @@ function Search({ currency, setCurrency }) {
         <option value="eur">EUR</option>
         <option value="jpy">JPY</option>
       </select>
+      <div>
+        {coins.map((coin) => (
+          <ul>
+            <li>
+              <img src={coin.thumb} alt={coins.name} />
+              <p>{coin.name}</p>
+            </li>
+          </ul>
+        ))}
+      </div>
     </div>
   );
 }
