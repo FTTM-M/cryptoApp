@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
+import { RotatingLines } from "react-loader-spinner";
 
 import { searchUrl } from "../../services/cryptoApi";
 
 function Search({ currency, setCurrency }) {
   const [search, setSearch] = useState("");
   const [coins, setCoins] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // console.log(coins);
 
   useEffect(() => {
     const controller = new AbortController();
     setCoins([]);
-    if (!search) return;
+    if (!search) {
+      setLoading(false);
+      return;
+    }
     const searchApi = async () => {
       try {
         const res = await fetch(searchUrl(search), {
@@ -20,6 +25,7 @@ function Search({ currency, setCurrency }) {
         const json = await res.json();
         if (json.coins) {
           setCoins(json.coins);
+          setLoading(false);
         } else {
           alert(json.status.error_message);
         }
@@ -27,7 +33,7 @@ function Search({ currency, setCurrency }) {
         if (error.name == !"AbortError") alert(error.message);
       }
     };
-
+    setLoading(true);
     searchApi();
 
     return () => controller.abort();
@@ -53,6 +59,9 @@ function Search({ currency, setCurrency }) {
         <option value="jpy">JPY</option>
       </select>
       <div>
+        {loading && (
+          <RotatingLines color="#434975" width="50px" height="50px" />
+        )}
         {coins.map((coin) => (
           <ul>
             <li>

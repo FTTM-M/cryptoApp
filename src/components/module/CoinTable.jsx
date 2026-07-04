@@ -5,10 +5,10 @@ import chartup from "../../assets/chart-up.svg";
 
 import styles from "./CoinTable.module.css";
 
-function CoinTable({ coins, loading  , currency}) {
+function CoinTable({ coins, loading, currency }) {
   // console.log(coins);
   return loading ? (
-    <RotatingLines color="gray" />
+    <RotatingLines color="gray"  />
   ) : (
     <div className={styles.container}>
       <table className={styles.table}>
