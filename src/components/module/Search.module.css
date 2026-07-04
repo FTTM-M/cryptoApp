@@ -48,6 +48,7 @@
 .search li {
   list-style: none;
   display: flex;
+  text-align: left;
   margin-bottom: 15px;
   padding-bottom: 5px;
   border-bottom: 2px solid #131315;
