@@ -4,6 +4,7 @@ import chartdown from "../../assets/chart-down.svg";
 import chartup from "../../assets/chart-up.svg";
 
 import styles from "./CoinTable.module.css";
+import { marketChart } from "../../services/cryptoApi";
 
 function CoinTable({ coins, loading, currency, setChart }) {
   // console.log(coins);
@@ -41,6 +42,7 @@ export default CoinTable;
 
 const Table = ({
   coin: {
+    id,
     image,
     name,
     symbol,
@@ -52,8 +54,14 @@ const Table = ({
   setChart,
 }) => {
   // console.log(currency);
-  const chartHandler = () => {
-    setChart(true);
+  const chartHandler = async () => {
+    try {
+      const res = await fetch(marketChart(id));
+      const json = await res.json();
+      setChart(json);
+    } catch (error) {
+      setChart(null);
+    }
   };
   return (
     <tr>

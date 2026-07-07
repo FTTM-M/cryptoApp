@@ -1,6 +1,7 @@
 import styles from "./Chart.module.css";
 
-function Chart({ setChart }) {
+function Chart({ chart, setChart }) {
+  console.log(chart);
   return (
     <div className={styles.container}>
       <span className={styles.cross} onClick={() => setChart(null)}>
