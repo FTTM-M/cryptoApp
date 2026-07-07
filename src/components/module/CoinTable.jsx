@@ -5,10 +5,10 @@ import chartup from "../../assets/chart-up.svg";
 
 import styles from "./CoinTable.module.css";
 
-function CoinTable({ coins, loading, currency }) {
+function CoinTable({ coins, loading, currency, setChart }) {
   // console.log(coins);
   return loading ? (
-    <RotatingLines color="gray"  />
+    <RotatingLines color="gray" />
   ) : (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -24,7 +24,12 @@ function CoinTable({ coins, loading, currency }) {
         </thead>
         <tbody>
           {coins.map((coin) => (
-            <Table coin={coin} key={coin.id} currency={currency} />
+            <Table
+              coin={coin}
+              key={coin.id}
+              currency={currency}
+              setChart={setChart}
+            />
           ))}
         </tbody>
       </table>
@@ -44,12 +49,16 @@ const Table = ({
     total_volume,
   },
   currency,
+  setChart,
 }) => {
   // console.log(currency);
+  const chartHandler = () => {
+    setChart(true);
+  };
   return (
     <tr>
       <th>
-        <div className={styles.symbol}>
+        <div className={styles.symbol} onClick={chartHandler}>
           <img src={image} alt={name} />
           <span>{symbol.toUpperCase()}</span>
         </div>
