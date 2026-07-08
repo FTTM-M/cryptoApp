@@ -1,7 +1,10 @@
+import { useState } from "react";
 import styles from "./Chart.module.css";
+import Convert from "../../helpers/Convert";
 
 function Chart({ chart, setChart }) {
-  console.log(chart);
+  const [type, setType] = useState("prices");
+  console.log(Convert(chart,type));
   return (
     <div className={styles.container}>
       <span className={styles.cross} onClick={() => setChart(null)}>
