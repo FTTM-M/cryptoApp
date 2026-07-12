@@ -13,9 +13,18 @@ import {
 } from "recharts";
 
 function Chart({ chart, setChart }) {
-  console.log(chart);
+  // console.log(chart);
 
   const [type, setType] = useState("prices");
+
+  const typeHandler = (event) => {
+    if (event.target.tagName === "BUTTON") {
+      const buttonName = event.target.innerText.toLowerCase().replace(" ", "_");
+      // console.log(buttonName);
+      setType(buttonName);
+    }
+  };
+
   // console.log(Convert(chart, type));
   return (
     <div className={styles.container}>
@@ -30,10 +39,16 @@ function Chart({ chart, setChart }) {
         <div className={styles.graph}>
           <ChartGraph type={type} data={Convert(chart, type)} />
         </div>
-        <div className={styles.type}>
-          <button>Prices</button>
-          <button>Market Cap</button>
-          <button>Total Volumes</button>
+        <div className={styles.type} onClick={typeHandler}>
+          <button className={type === "prices" ? styles.selected : null}>
+            Prices
+          </button>
+          <button className={type === "market_cap" ? styles.selected : null}>
+            Market Cap
+          </button>
+          <button className={type === "total_volumes" ? styles.selected : null}>
+            Total Volumes
+          </button>
         </div>
 
         <div className={styles.details}>
