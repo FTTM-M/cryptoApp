@@ -40,8 +40,10 @@ function CoinTable({ coins, loading, currency, setChart }) {
 
 export default CoinTable;
 
-const Table = ({
-  coin: {
+const Table = ({ coin, currency, setChart }) => {
+  // console.log(currency);
+
+  const {
     id,
     image,
     name,
@@ -49,16 +51,14 @@ const Table = ({
     current_price,
     price_change_percentage_24h,
     total_volume,
-  },
-  currency,
-  setChart,
-}) => {
-  // console.log(currency);
+  } = coin;
+
   const chartHandler = async () => {
     try {
       const res = await fetch(marketChart(id));
       const json = await res.json();
-      setChart(json);
+
+      setChart({ ...json, coin });
     } catch (error) {
       setChart(null);
     }

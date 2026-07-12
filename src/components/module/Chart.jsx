@@ -13,16 +13,46 @@ import {
 } from "recharts";
 
 function Chart({ chart, setChart }) {
+  console.log(chart);
+
   const [type, setType] = useState("prices");
-  console.log(Convert(chart, type));
+  // console.log(Convert(chart, type));
   return (
     <div className={styles.container}>
       <span className={styles.cross} onClick={() => setChart(null)}>
         X
       </span>
       <div className={styles.chart}>
+        <div className={styles.name}>
+          <img src={chart.coin.image} alt="" />
+          <p>{chart.coin.name}</p>
+        </div>
         <div className={styles.graph}>
           <ChartGraph type={type} data={Convert(chart, type)} />
+        </div>
+        <div className={styles.type}>
+          <button>Prices</button>
+          <button>Market Cap</button>
+          <button>Total Volumes</button>
+        </div>
+
+        <div className={styles.details}>
+          <div>
+            <p>Prices:</p>
+            <span>{chart.coin.current_price}</span>
+          </div>
+
+          <div>
+            {" "}
+            <p>ATH:</p>
+            <span>{chart.coin.ath}</span>
+          </div>
+
+          <div>
+            {" "}
+            <p>Market Cap:</p>
+            <span>{chart.coin.market_cap}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +61,7 @@ function Chart({ chart, setChart }) {
 
 export default Chart;
 
-const ChartGraph = ({type, data}) => {
+const ChartGraph = ({ type, data }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart width={400} height={400} data={data}>
