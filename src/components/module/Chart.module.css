@@ -76,9 +76,8 @@
 .details div{
   display: flex;
   font-size: 1.1rem;
+  font-weight: 630;
 }
-
-
 .details p{
-  font-weight: 700;
+  margin-right: 5px;
 }

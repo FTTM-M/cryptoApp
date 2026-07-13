@@ -24,7 +24,7 @@ function Chart({ chart, setChart }) {
       setType(buttonName);
     }
   };
-
+  // console.log("type:", type);
   // console.log(Convert(chart, type));
   return (
     <div className={styles.container}>
@@ -43,8 +43,8 @@ function Chart({ chart, setChart }) {
           <button className={type === "prices" ? styles.selected : null}>
             Prices
           </button>
-          <button className={type === "market_cap" ? styles.selected : null}>
-            Market Cap
+          <button className={type === "market_caps" ? styles.selected : null}>
+            Market Caps
           </button>
           <button className={type === "total_volumes" ? styles.selected : null}>
             Total Volumes
@@ -53,19 +53,19 @@ function Chart({ chart, setChart }) {
 
         <div className={styles.details}>
           <div>
-            <p>Prices:</p>
+            <p>Prices :</p>
             <span>{chart.coin.current_price}</span>
           </div>
 
           <div>
             {" "}
-            <p>ATH:</p>
+            <p>ATH :</p>
             <span>{chart.coin.ath}</span>
           </div>
 
           <div>
             {" "}
-            <p>Market Cap:</p>
+            <p>Market Cap :</p>
             <span>{chart.coin.market_cap}</span>
           </div>
         </div>
