@@ -8,7 +8,7 @@
 }
 .Pagination button {
   width: 80px;
-  background-color: #254694;
+  background-color:  #495AC8;
   border: none;
   color: #ffffff;
   padding: 5px 10px;
@@ -18,7 +18,7 @@
 }
 .Pagination p {
   display: inline-block;
-  border: 1px solid #254694;
+  border: 1px solid  #495AC8;
   width: 25px;
   text-align: center;
   border-radius: 5px;
@@ -27,5 +27,5 @@
   opacity: 0.3;
 }
 .selected {
-  background-color: #254694;
+  background-color:  #495AC8;
 }

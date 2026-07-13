@@ -9,7 +9,10 @@ import { marketChart } from "../../services/cryptoApi";
 function CoinTable({ coins, loading, currency, setChart }) {
   // console.log(coins);
   return loading ? (
-    <RotatingLines color="gray" />
+    <div className={styles.loader}>
+      {" "}
+      <RotatingLines color="gray" />
+    </div>
   ) : (
     <div className={styles.container}>
       <table className={styles.table}>

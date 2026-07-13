@@ -14,7 +14,7 @@
 }
 .table th {
   font-size: 1.2rem;
-  padding: 10px 0px;
+  padding: 10px ;
   text-align: left;
 }
 .table tbody tr {
@@ -44,6 +44,11 @@
 .fale {
   color: #d33636;
 }
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 200px 0px;
+}
 @media (max-width: 600px) {
   .table {
     display: block;
@@ -53,5 +58,6 @@
   .table td,
   .table th {
     padding: 0px 10px;
+  
   }
 }
